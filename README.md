@@ -1,2 +1,2 @@
-# ISIBMath
-Files and document from my coursework at ISIBang during 2023 to 2026
+# Kosaraju's Algorithm Implementation for SCC detection
+This project implements Kosaraju's algorithm for detecting Strongly Connected Components (SCCs) in directed graphs. Strongly Connected Components are fundamental structures in graph theory that represent maximal subgraphs where every vertex is reachable from every other vertex. The algorithm employs a two-pass Depth-First Search (DFS) approach with linear time complexity $O(V + E)$, making it highly efficient for large-scale graph analysis. We present the theoretical foundation, implementation details, complexity analysis, and experimental results on both synthetic and real-world datasets. The algorithm demonstrates excellent scalability and correctness across various graph structures.
