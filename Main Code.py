@@ -4,7 +4,7 @@ import time
 import tracemalloc
 import matplotlib.pyplot as plt
 import sys
-sys.setrecursionlimit(10000) # Adjust the limit as needed
+sys.setrecursionlimit(20000) # Adjust the limit as needed
 
 class Graph:
     """
@@ -260,15 +260,15 @@ def run_experiments():
     print("Experiment 1: Scalability Analysis")
     print("=" * 50)
 
-    sizes = [100, 500, 1000, 2000, 5000, 10000]
+    sizes = [100, 500, 1000, 5000, 10000]
     results = []
     
     for size in sizes:
         print(f"Testing with {size} vertices...")
         
         # Generate random graph
-        graph = generate_random_graph(size, edge_density=0.2)
-        
+        graph = generate_random_graph(size, edge_density=0.0002)
+
         # Measure runtime
         start_time = time.time()
         scc_list = graph.kosaraju_scc(use_iterative=size > 1000)
@@ -394,32 +394,28 @@ def plot_results(results):
 
    
 
-if __name__ == "__main__":
-    print("Kosaraju's Algorithm - Strongly Connected Components Detection")
-    print("=" * 60)
+
+print("Kosaraju's Algorithm - Strongly Connected Components Detection")
+print("=" * 60)
     
-    # Create a sample graph
-    g = Graph(8)
-    edges = [
-        (0, 1), (1, 2), (2, 0), (2, 3), 
-        (3, 4), (4, 5), (5, 3), (5, 6), 
-        (6, 7), (7, 6)
-    ]
+# Create a sample graph
+g = Graph(8)
+edges = [(0, 1), (1, 2), (2, 0), (2, 3), (3, 4), (4, 5), (5, 3), (5, 6), (6, 7), (7, 6)]
     
-    for u, v in edges:
-        g.add_edge(u, v)
+for u, v in edges:
+    g.add_edge(u, v)
     
-    print("Graph edges:", edges)
+print("Graph edges:", edges)
     
-    # Find SCCs
-    scc_list = g.kosaraju_scc()
+# Find SCCs
+scc_list = g.kosaraju_scc()
     
-    print("\nStrongly Connected Components:")
-    for i, component in enumerate(scc_list):
+print("\nStrongly Connected Components:")
+for i, component in enumerate(scc_list):
         print(f"SCC {i + 1}: {component}")
     
-    # Run comprehensive experiments
-    results = run_experiments()
+# Run comprehensive experiments
+results = run_experiments()
     
-    # Plot results
-    plot_results(results)
+# Plot results
+plot_results(results)
