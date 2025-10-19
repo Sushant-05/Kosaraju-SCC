@@ -3,17 +3,14 @@ import random
 import time
 import tracemalloc
 import matplotlib.pyplot as plt
+import sys
+
+sys.setrecursionlimit(6000)
 
 class Graph:
-    """
-    Represents a directed graph using adjacency lists for efficient SCC detection.
-    """
     def __init__(self, vertices):
         """
         Initialize graph with given number of vertices.
-        
-        Args:
-            vertices (int): Number of vertices in the graph
         """
         self.V = vertices
         # Adjacency list for original graph
@@ -387,39 +384,28 @@ def plot_results(results):
     plt.savefig('kosaraju_performance.png', dpi=300, bbox_inches='tight')
     plt.show()
 
-def main():
-    """
-    Main function to demonstrate the algorithm.
-    """
-    # Simple demonstration
-    print("Kosaraju's Algorithm - Strongly Connected Components Detection")
-    print("=" * 60)
-    
-    # Create a sample graph
-    g = Graph(8)
-    edges = [
-        (0, 1), (1, 2), (2, 0), (2, 3), 
-        (3, 4), (4, 5), (5, 3), (5, 6), 
-        (6, 7), (7, 6)
-    ]
-    
-    for u, v in edges:
-        g.add_edge(u, v)
-    
-    print("Graph edges:", edges)
-    
-    # Find SCCs
-    scc_list = g.kosaraju_scc()
-    
-    print("\nStrongly Connected Components:")
-    for i, component in enumerate(scc_list):
-        print(f"SCC {i + 1}: {component}")
-    
-    # Run comprehensive experiments
-    results = run_experiments()
-    
-    # Plot results
-    plot_results(results)
 
-if __name__ == "__main__":
-    main()
+print("Kosaraju's Algorithm - Strongly Connected Components Detection")
+print("=" * 60)
+    
+# Create a sample graph
+g = Graph(8)
+edges = [(0, 1), (1, 2), (2, 0), (2, 3), (3, 4), (4, 5), (5, 3), (5, 6), (6, 7), (7, 6)]
+for u, v in edges:
+    g.add_edge(u, v)
+    
+print("Graph edges:", edges)
+    
+# Find SCCs
+scc_list = g.kosaraju_scc()
+    
+print("\nStrongly Connected Components:")
+for i, component in enumerate(scc_list):
+    print(f"SCC {i + 1}: {component}")
+    
+# Run comprehensive experiments
+results = run_experiments()
+    
+# Plot results
+plot_results(results)
+
