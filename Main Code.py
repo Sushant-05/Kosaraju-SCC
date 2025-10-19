@@ -4,13 +4,18 @@ import time
 import tracemalloc
 import matplotlib.pyplot as plt
 import sys
-
-sys.setrecursionlimit(6000)
+sys.setrecursionlimit(10000) # Adjust the limit as needed
 
 class Graph:
+    """
+    Represents a directed graph using adjacency lists for efficient SCC detection.
+    """
     def __init__(self, vertices):
         """
         Initialize graph with given number of vertices.
+        
+        Args:
+            vertices (int): Number of vertices in the graph
         """
         self.V = vertices
         # Adjacency list for original graph
@@ -254,8 +259,8 @@ def run_experiments():
     # Experiment 1: Scalability Analysis
     print("Experiment 1: Scalability Analysis")
     print("=" * 50)
-    
-    sizes = [100, 500, 1000, 2000, 5000]
+
+    sizes = [100, 500, 1000, 2000, 5000, 10000]
     results = []
     
     for size in sizes:
@@ -365,6 +370,7 @@ def plot_results(results):
     memory_usage = [r['memory'] for r in results]
     
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+    # fig,  ax2 = plt.subplots(1, 1,figsize=(12, 5))
     
     # Runtime plot
     ax1.plot(vertices, runtimes, 'bo-', linewidth=2, markersize=8)
@@ -385,27 +391,35 @@ def plot_results(results):
     plt.show()
 
 
-print("Kosaraju's Algorithm - Strongly Connected Components Detection")
-print("=" * 60)
-    
-# Create a sample graph
-g = Graph(8)
-edges = [(0, 1), (1, 2), (2, 0), (2, 3), (3, 4), (4, 5), (5, 3), (5, 6), (6, 7), (7, 6)]
-for u, v in edges:
-    g.add_edge(u, v)
-    
-print("Graph edges:", edges)
-    
-# Find SCCs
-scc_list = g.kosaraju_scc()
-    
-print("\nStrongly Connected Components:")
-for i, component in enumerate(scc_list):
-    print(f"SCC {i + 1}: {component}")
-    
-# Run comprehensive experiments
-results = run_experiments()
-    
-# Plot results
-plot_results(results)
 
+   
+
+if __name__ == "__main__":
+    print("Kosaraju's Algorithm - Strongly Connected Components Detection")
+    print("=" * 60)
+    
+    # Create a sample graph
+    g = Graph(8)
+    edges = [
+        (0, 1), (1, 2), (2, 0), (2, 3), 
+        (3, 4), (4, 5), (5, 3), (5, 6), 
+        (6, 7), (7, 6)
+    ]
+    
+    for u, v in edges:
+        g.add_edge(u, v)
+    
+    print("Graph edges:", edges)
+    
+    # Find SCCs
+    scc_list = g.kosaraju_scc()
+    
+    print("\nStrongly Connected Components:")
+    for i, component in enumerate(scc_list):
+        print(f"SCC {i + 1}: {component}")
+    
+    # Run comprehensive experiments
+    results = run_experiments()
+    
+    # Plot results
+    plot_results(results)
