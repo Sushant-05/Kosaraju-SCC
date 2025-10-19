@@ -5,12 +5,6 @@ def csv_to_unweighted_adjacency_matrix(csv_file, has_header=True):
     """
     Convert CSV file to adjacency matrix for unweighted directed graph
     
-    Args:
-        csv_file (str): Path to CSV file
-        has_header (bool): Whether CSV has header row
-    
-    Returns:
-        tuple: (adjacency_matrix, vertices)
     """
     # Read CSV file
     df = pd.read_csv(csv_file)
