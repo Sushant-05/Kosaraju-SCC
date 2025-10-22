@@ -41,7 +41,7 @@ python main.py
 ## Usage
 Download "kosaraju.py" and "Adjacency matrix.py" from the repository.
 ```
-==========================================================================================Basic Usage
+=============================================================================================Basic Usage
 ```python
 from kosaraju import Graph
 
@@ -59,7 +59,7 @@ scc_list = g.kosaraju_scc()
 print("Strongly Connected Components:", scc_list)
 # Output: [[0, 1, 2], [3, 4]]
 ```
-===========================================================================================Using from command line interface
+============================================================================================Using from command line interface
 ```python
 # Run on a sample graph
 python main.py --vertices 100 --density 0.2
@@ -70,7 +70,7 @@ python main.py --input graph.txt --output results.txt
 # Run performance benchmarks
 python benchmarks.py --sizes 100 500 1000 5000
 ```
-===========================================================================================Advanced Usage
+============================================================================================Advanced Usage
 ```python
 # For large graphs, use iterative DFS
 scc_list = g.kosaraju_scc(use_iterative=True)
