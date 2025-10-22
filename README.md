@@ -6,6 +6,7 @@ This project implements Kosaraju's algorithm for detecting Strongly Connected Co
 - [Quick Start](#quickstart)
 - [Usage](#usage)
 - [Example](#example)
+- [For our professor](#forourprofessor)
 
 
 ## 🚀 Overview
@@ -95,3 +96,6 @@ for u, v in edges:
 scc_list = g.kosaraju_scc()
 print(scc_list)  # [[0, 1, 2], [3, 4]]
 ```
+
+##  For our professor
+We have made some changes to the main code file. Now we can import the file in our python directories and call the main function to run directly the output of what we performed a study of in our submission pdf. This makes it easier for the code to also be used in future directly using command line interface. This makes it possible for us to use the functions defined in the code on real world graphs like the one provided in our repository named "twitter.clean.4k.csv.zip". One can use "Adjacency matrix.py" to convert the graph into an adjacency matrix and the run the code on the adjacency matrix. This will however change the time complexity to O(n^2).
