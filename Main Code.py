@@ -395,27 +395,35 @@ def plot_results(results):
    
 
 
-print("Kosaraju's Algorithm - Strongly Connected Components Detection")
-print("=" * 60)
+def main():
+    print("Kosaraju's Algorithm - Strongly Connected Components Detection")
+    print("=" * 60)
     
-# Create a sample graph
-g = Graph(8)
-edges = [(0, 1), (1, 2), (2, 0), (2, 3), (3, 4), (4, 5), (5, 3), (5, 6), (6, 7), (7, 6)]
+    # Create a sample graph
+    g = Graph(8)
+    edges = [
+        (0, 1), (1, 2), (2, 0), (2, 3), 
+        (3, 4), (4, 5), (5, 3), (5, 6), 
+        (6, 7), (7, 6)
+    ]
     
-for u, v in edges:
-    g.add_edge(u, v)
+    for u, v in edges:
+        g.add_edge(u, v)
     
-print("Graph edges:", edges)
+    print("Graph edges:", edges)
     
-# Find SCCs
-scc_list = g.kosaraju_scc()
+    # Find SCCs
+    scc_list = g.kosaraju_scc()
     
-print("\nStrongly Connected Components:")
-for i, component in enumerate(scc_list):
+    print("\nStrongly Connected Components:")
+    for i, component in enumerate(scc_list):
         print(f"SCC {i + 1}: {component}")
     
-# Run comprehensive experiments
-results = run_experiments()
+    # Run comprehensive experiments
+    results = run_experiments()
     
-# Plot results
-plot_results(results)
+    # Plot results
+    plot_results(results)
+
+if __name__ == "__main__":
+    main()
